@@ -1,5 +1,7 @@
 # Dating app prototype
 
+Work in progress.
+
 Using flutter and Golang.
 
 To test the code, do the following:
