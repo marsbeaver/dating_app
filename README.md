@@ -6,11 +6,21 @@ To test the code, do the following:
 
 ensure flutter is installed.
 
+```
 cd flutter_frontend
+```
 
+```
 flutter build web
+```
 
+```
 cd ..
+```
+
+```
+docker compose up --build
+```
 
 
 
