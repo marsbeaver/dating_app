@@ -6,7 +6,17 @@ Using flutter and Golang.
 
 To test the code, do the following:
 
-ensure flutter is installed.
+create a .env file in the root of the project and define the following variables:
+
+```
+JWT_KEY=yourkey
+MONGO_URI=yourdburi
+PORT=8080
+DATABASE=yourdb
+BASE_URL=http://localhost:8080
+```
+
+Ensure flutter is installed.
 
 ```
 cd flutter_frontend
