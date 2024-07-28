@@ -1,8 +1,8 @@
 services:
   backend:
     build:
-      context: ./
-      dockerfile: golang_server/Dockerfile
+      context: ./golang_server
+      dockerfile: Dockerfile
     image: marsbeaver/datingbackend
     env_file:
       - .env
@@ -16,8 +16,8 @@ services:
 
   frontend:
     build:
-      context: ./
-      dockerfile: flutter_frontend/Dockerfile
+      context: ./flutter_frontend
+      dockerfile: Dockerfile
     image: marsbeaver/datingfrontend
     ports:
       - "80:80"
