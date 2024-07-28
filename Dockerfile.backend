@@ -1,0 +1,36 @@
+# Use the official Golang image
+FROM golang:1.22
+
+# Set the working directory
+WORKDIR /golang_server
+
+# Copy the go mod and sum files
+COPY golang_server/go.mod golang_server/go.sum ./
+
+# Download the dependencies
+RUN go mod download
+
+# Copy the entire golang_server directory
+COPY golang_server/ .
+
+# Create new non-root user and set ownership
+RUN useradd --create-home appuser && \
+    chown -R appuser:appuser /golang_server
+
+# Switch to non-root user
+USER appuser
+
+# Set the working directory for the main.go
+WORKDIR /golang_server/cmd/app
+
+# Build the Go app as non-root user
+RUN go build -o /golang_server/main .
+
+# Set the working directory back to the root of the project
+WORKDIR /golang_server
+
+# Expose port 8080
+EXPOSE 8080
+
+# Start the Go app
+CMD ["/golang_server/main"]
