@@ -1,11 +1,9 @@
-version: '3'
-
 services:
   backend:
     build:
       context: ./
-      dockerfile: Dockerfile.backend
-    image: marsbeaver/datingbackend:v1
+      dockerfile: golang_server/Dockerfile
+    image: marsbeaver/datingbackend
     env_file:
       - .env
     ports:
@@ -19,16 +17,9 @@ services:
   frontend:
     build:
       context: ./
-      dockerfile: Dockerfile.frontend
-    image: marsbeaver/datingfrontend:v1
+      dockerfile: flutter_frontend/Dockerfile
+    image: marsbeaver/datingfrontend
     ports:
       - "80:80"
     environment:
       - BASE_URL=${BASE_URL}
-
-  mongo:
-    image: mongo
-    ports:
-      - "27017:27017"
-    environment:
-      - MONGO_INITDB_DATABASE=${DATABASE}
